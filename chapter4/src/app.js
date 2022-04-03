@@ -173,3 +173,48 @@ function Accumulator(startingValue, userPrompt) {
 let accum = new Accumulator(200, 100);
 accum.read();
 console.log(accum.value);
+
+// symbols 
+let id = Symbol("id");
+let code = Symbol("code");
+
+console.log(id);
+console.log(code);
+
+
+let myUser = {
+    [id]: Symbol('id'),
+    name: 'Michael',
+}
+
+myUser[id] = 5;
+console.log(myUser);
+
+
+let symbolExample = Symbol('id');
+
+
+myUser[id] = 10;
+console.log(myUser);
+
+// symbols are skipped in for in loop
+for(let i in myUser) {
+    console.log(i);
+};
+
+// if symbol not exist - make it 
+let idAgain = Symbol.for('id');
+
+// getName by symbol 
+// let giveAName = Symbol.keyFor('id');
+
+// hard chapter 
+/*
+Symbol is a primitive type for unique identifiers.
+Symbols are created with Symbol() call with an optional description (name).
+
+Symbols are always different values, even if they have the same name.
+If we want same-named symbols to be equal, then we should use the global registry:
+  - Symbol.for(key) returns (creates if needed) a global symbol with key as the name. Multiple calls of Symbol.for with the same key return exactly the same symbol.
+  
+*/
